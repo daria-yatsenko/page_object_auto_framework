@@ -1,4 +1,4 @@
-package pages.nextGeneration;
+package pages;
 
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -18,7 +18,7 @@ import static org.hamcrest.MatcherAssert.assertThat;
 
 public class BasePage {
 
-WebDriverWait wait;
+ private WebDriverWait wait;
 
   public BasePage(WebDriver driver) {
     PageFactory.initElements(driver, this);
