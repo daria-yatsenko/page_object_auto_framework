@@ -19,9 +19,11 @@ import static org.hamcrest.MatcherAssert.assertThat;
 public class BasePage {
 
   private WebDriverWait wait;
+  private WebDriver driver;
 
   public BasePage(WebDriver driver) {
     //This initElements method will create all WebElements
+    this.driver=driver;
     PageFactory.initElements(driver, this);
     wait = new WebDriverWait(driver, Duration.ofSeconds(20));
   }
