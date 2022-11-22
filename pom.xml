@@ -15,6 +15,8 @@
         <testng-version>7.6.1</testng-version>
         <maven-surefire-plugin-version>3.0.0-M7</maven-surefire-plugin-version>
         <hamcrest-vesrion>2.2</hamcrest-vesrion>
+        <aspectj.version>1.9.6</aspectj.version>
+        <allure-testng-version>2.20.1</allure-testng-version>
     </properties>
 
     <dependencies>
@@ -35,6 +37,11 @@
             <version>${hamcrest-vesrion}</version>
             <scope>test</scope>
         </dependency>
+        <dependency>
+            <groupId>io.qameta.allure</groupId>
+            <artifactId>allure-testng</artifactId>
+            <version>${allure-testng-version}</version>
+        </dependency>
     </dependencies>
 
     <build>
@@ -44,10 +51,23 @@
             <artifactId>maven-surefire-plugin</artifactId>
             <version>${maven-surefire-plugin-version}</version>
             <configuration>
+<!--                execute test in parallel using pom.xml-->
+<!--                    <parallel>methods</parallel>-->
+<!--                    <threadCount>10</threadCount>-->
                 <suiteXmlFiles>
                     <suiteXmlFile>testng.xml</suiteXmlFile>
                 </suiteXmlFiles>
+                <argLine>
+                    -javaagent:"${settings.localRepository}/org/aspectj/aspectjweaver/${aspectj.version}/aspectjweaver-${aspectj.version}.jar"
+                </argLine>
             </configuration>
+            <dependencies>
+                <dependency>
+                    <groupId>org.aspectj</groupId>
+                    <artifactId>aspectjweaver</artifactId>
+                    <version>${aspectj.version}</version>
+                </dependency>
+            </dependencies>
         </plugin>
     </plugins>
     </build>

@@ -2,7 +2,6 @@ package tests;
 
 import org.testng.annotations.Test;
 
-
 public class SomeTest extends BaseTest {
 
 
