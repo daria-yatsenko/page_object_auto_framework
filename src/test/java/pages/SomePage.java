@@ -8,17 +8,32 @@ import org.openqa.selenium.support.PageFactory;
 public class SomePage extends BasePage {
 
   public SomePage(WebDriver driver) {
+    //use driver from parent class
     super(driver);
+    //This initElements method will create all WebElements
     PageFactory.initElements(driver, this);
   }
 
+  @FindBy(id = "the fastest locator")
+  private WebElement id;
 
-  @FindBy(xpath = "//span[contains(text(),'SignUp')]/..")
-  private WebElement signUpButton;
+  @FindBy(className = "the second fastest locator")
+  private WebElement className;
 
-  @FindBy(css = "img[alt='logo.png']")
-  private WebElement logoImg;
+  @FindBy(tagName = "the third fastest locator")
+  private WebElement tagName;
 
+  @FindBy(name = "the fourth fastest locator")
+  private WebElement name;
+
+  @FindBy(linkText = "the fifth fastest locator")
+  private WebElement linkText;
+
+  @FindBy(css = "the sixth fastest locator")
+  private WebElement css;
+
+  @FindBy(xpath = "the seventh fastest locator")
+  private WebElement xpath;
 
 
 

@@ -18,24 +18,26 @@ import static org.hamcrest.MatcherAssert.assertThat;
 
 public class BasePage {
 
- private WebDriverWait wait;
+  private WebDriverWait wait;
 
   public BasePage(WebDriver driver) {
+    //This initElements method will create all WebElements
     PageFactory.initElements(driver, this);
-    wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+    wait = new WebDriverWait(driver, Duration.ofSeconds(20));
   }
 
-  public void waitUntilDisplayed(WebElement element){
+  public void waitUntilDisplayed(WebElement element) {
     wait
         .until(ExpectedConditions.visibilityOf(element));
   }
-  public void clickOn(WebElement element){
+
+  public void clickOn(WebElement element) {
     wait
         .until(ExpectedConditions.elementToBeClickable(element));
     element.click();
   }
 
-  public void sendKeysToInputField(WebElement input, String value){
+  public void sendKeysToInputField(WebElement input, String value) {
     waitUntilDisplayed(input);
     input.sendKeys(value);
   }
